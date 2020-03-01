@@ -1,0 +1,17 @@
+.dropdown a{
+    display: block;
+}
+.dropdown .dropdown-menu .dropdown-item{
+    position: relative;
+}
+.dropdown .dropdown-menu .dropdown-item > .dropdown-menu
+{
+    position: absolute;
+    left: 100%;
+    top: 0;
+    border-radius: 0;
+}
+.dropdown .dropdown-menu .dropdown-item:hover > .dropdown-menu{
+    display: block;
+    
+}

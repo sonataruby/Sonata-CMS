@@ -1,0 +1,79 @@
+<?php
+namespace Modules\{name};
+use App\Controllers\AdminController;
+use \Modules\{name}\Models\{controller}{name} as Models{controller};
+//--------------------------------------------------------------------
+// CRM Auto Pool
+// Contact thietkewebvip@gmail.com
+//--------------------------------------------------------------------
+class {controller} extends AdminController
+{
+	public $url = "{url}";
+	
+	public $title = "Manager";
+	public $name = "{name}";
+	public function __construct(){
+		$this->models{controller} = new Models{controller};
+		
+		$this->validateViews('{name}');
+
+	}
+
+	
+	public function index()
+	{
+		return $this->layout('{home}',[
+			
+			"title"		=> $this->title,
+			"name"		=> $this->name,
+			"url" => $this->url
+		]);
+	}
+
+	public function cpanel(){
+		return view("{cpanel}");
+	}
+
+	public function breadcrumb(){
+		return view("{breadcrumb}");
+	}
+	public function record($id=0){
+		$this->getRole("manager");
+		if($this->input->getMethod() == "post"){
+			
+		}
+		$data = new \stdClass;
+		if($id > 0){
+			$data = $this->models{controller}->getRecord();
+		}
+		return $this->layout('{record}',[
+			"title"		=> $this->title,
+			"name"		=> $this->name,
+			"url" => $this->url,
+			"record" => $data
+		]);
+	}
+
+
+	public function create($id=0){
+		$this->getRole("editer");
+		if($this->input->getMethod() == "post"){
+			
+		}
+		$data = new \stdClass;
+		if($id > 0){
+			$data = $this->models{controller}->getRow();
+		}
+		return $this->layout('{record}',[
+			
+			"title"		=> $this->title,
+			"name"		=> $this->name,
+			"url" => $this->url,
+			"record" => $data
+		]);
+	}
+
+	public function delete(){
+		$this->getRole("editer","deleted");
+	}
+}

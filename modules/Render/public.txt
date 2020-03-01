@@ -1,0 +1,15 @@
+<?php
+namespace Modules\{name};
+use App\Controllers\BaseController;
+//--------------------------------------------------------------------
+// CRM Auto Pool
+// Contact thietkewebvip@gmail.com
+//--------------------------------------------------------------------
+class {controller} extends BaseController
+{
+	public function index()
+	{
+		return $this->layout('{home}');
+	}
+
+}
