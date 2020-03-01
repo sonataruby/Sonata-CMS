@@ -17,11 +17,11 @@ class Api extends BaseController
 			if($this->user->create($email,$password) == true){
 				return $this->respondCreated((array)$this->user->getData($email));
 			}else{
-				return $this->response(NULL, 404);
+				return $this->respondCreated(NULL, 404);
 			}
 
 		}
-		return $this->response(NULL, 404);
+		return $this->respondCreated(NULL, 404);
 		
 	}
 	
@@ -35,10 +35,10 @@ class Api extends BaseController
 			if($this->user->setLogin($email,$password) == true){
 				return $this->respondCreated((array)$this->user->getData($email));
 			}else{
-				return $this->response(NULL, 404);
+				return $this->respondCreated(NULL, 404);
 			}
 
 		}
-		return $this->response(NULL, 404);
+		return $this->respondCreated(NULL, 404);
 	}
 }
