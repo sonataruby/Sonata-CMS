@@ -37,11 +37,11 @@ function Widgets($obj, $action="", $arv=[]){
 	$class = '\\'.$obj.'::'.$action;
 	
 	if(method_exists('\\'.$obj, $action)){
-		print_r(view_cell($class,$arv));
+		return view_cell($class,$arv);
+		//return true;
 	}
-	if(defined("DEBUG")){
-		echo $class." not exists";
-	}
+	
+	return false;
 }
 
 function getWidget($arv=[], $postion="left"){

@@ -113,6 +113,13 @@
 <div class="container-fluid">
 	<div class="row flex-xl-nowrap">
 		
+		<?php 
+		$make = false;
+		$w_c = Widgets($Wingets,"cpanel");
+		if($w_c){
+
+		
+		?>
 		<div class="col-md-3 col-xl-2 bd-sidebar">
 			<div id="cpanel" role="menu">
 				<ul class="nav flex-column">
@@ -126,13 +133,29 @@
 
 			<div class="submenu">
 				
-				<?php Widgets($Wingets,"cpanel");?>
+				<?php print $w_c;?>
 			</div>
 
 		</div>
-		
-	    <main id="content" class="col-md-9 col-xl-10" role="main">
-	    		<?php Widgets($Wingets,"breadcrumb");?>
+		<?php
+			}else{ 
+				$make = true;
+			?>
+				<div class="bd-sidebar" style="width:80px;">
+					<div id="cpanel" role="menu">
+						<ul class="nav flex-column">
+						  <li class="nav-link active"><a href="#"><i class="fa fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+						  <li class="nav-link"><a href="/pages/manager"><i class="fa fa-file-word"></i><span>Pages</span></a></li>
+						  <li class="nav-link"><a href="/media/manager"><i class="fa fa-file-pdf"></i><span>Media</span></a></li>
+						  <li class="nav-link"><a href="/settings/modules/manager" title="Modules"><i class="fa fa-file-medical-alt"></i><span>Modules</span></a></li>
+						  <li class="nav-link"><a href="/settings/general"><i class="fa fa-cogs"></i><span>Settings</span></a></li>
+						</ul>
+					</div>
+				</div>
+			<?php }
+		?>
+	    <main id="content" class="<?php echo ($make ? "col-md-11" : "col-md-9");?>" role="main">
+	    		<?php print Widgets($Wingets,"breadcrumb");?>
 	    		
 	    		<div class="py-md-3  bd-content">
 	            	<?php echo $content; ?>

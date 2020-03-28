@@ -124,6 +124,8 @@ remote.txt
 composer.lock
 package-lock.json
 /develop/
+/admin/writable
+/public/writable
 # Visual Studio Code
 .vscode/
 
